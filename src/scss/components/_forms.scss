@@ -1,0 +1,88 @@
+/**
+ * Forms Component Styles
+ */
+
+// General form styles
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    
+    &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.1);
+    }
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+// Comment form
+.comment-form {
+    .comment-form-author,
+    .comment-form-email,
+    .comment-form-url {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1rem;
+        
+        label {
+            font-weight: 500;
+        }
+    }
+    
+    .comment-form-comment {
+        margin-bottom: 1rem;
+        
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+// Contact form 7 styles
+.wpcf7-form {
+    .wpcf7-form-control-wrap {
+        margin-bottom: 1rem;
+    }
+    
+    .wpcf7-not-valid-tip {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+    
+    .wpcf7-validation-errors {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 1rem;
+    }
+    
+    .wpcf7-mail-sent-ok {
+        background: #d4edda;
+        color: #155724;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        margin-bottom: 1rem;
+    }
+}

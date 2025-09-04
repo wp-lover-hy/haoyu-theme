@@ -1,0 +1,51 @@
+/**
+ * Tablet Responsive Styles (769px to 1024px)
+ */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    // Container adjustments
+    .container {
+        max-width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    // Typography adjustments
+    .entry-title {
+        font-size: 1.75rem;
+    }
+    
+    // Header adjustments
+    .site-header {
+        padding: 1.5rem 0;
+    }
+    
+    // Navigation adjustments
+    .main-navigation ul {
+        gap: 1.5rem;
+    }
+    
+    // Content layout
+    .content-area {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+    }
+    
+    // Footer adjustments
+    .footer-widgets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    // Form adjustments
+    .comment-form {
+        .comment-form-author,
+        .comment-form-email {
+            grid-template-columns: 1fr 2fr;
+        }
+        
+        .comment-form-url {
+            grid-template-columns: 1fr;
+        }
+    }
+}
