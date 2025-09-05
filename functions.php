@@ -23,18 +23,18 @@ function haoyuai_enqueue_assets() {
     );
     
     // 加载GeneratePress的main.css
-    wp_enqueue_style( 'generatepress-main', 
-        get_template_directory_uri() . '/assets/css/main.css', 
-        array( 'generatepress-style' ),
-        wp_get_theme()->parent()->get('Version')
-    );
+    // wp_enqueue_style( 'generatepress-main', 
+    //     get_template_directory_uri() . '/assets/css/main.css', 
+    //     array( 'generatepress-style' ),
+    //     wp_get_theme()->parent()->get('Version')
+    // );
     
     // 加载GeneratePress的all.css（包含所有组件）
-    wp_enqueue_style( 'generatepress-all', 
-        get_template_directory_uri() . '/assets/css/all.css', 
-        array( 'generatepress-main' ),
-        wp_get_theme()->parent()->get('Version')
-    );
+    // wp_enqueue_style( 'generatepress-all', 
+    //     get_template_directory_uri() . '/assets/css/all.css', 
+    //     array( 'generatepress-main' ),
+    //     wp_get_theme()->parent()->get('Version')
+    // );
     
     // GeneratePress会自动加载必要的JavaScript，不需要手动加载
     
@@ -71,4 +71,11 @@ add_action( 'wp_enqueue_scripts', function() {
         }
     }
 }, 100 );
+
+// 添加主题样式类名到 body
+add_filter( 'body_class', 'haoyuai_add_theme_class' );
+function haoyuai_add_theme_class( $classes ) {
+    $classes[] = 'haoyu-theme';
+    return $classes;
+}
 
