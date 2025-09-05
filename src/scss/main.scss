@@ -1,48 +1,214 @@
 /**
- * HaoYu AI Child Theme - Main Stylesheet
- * 
- * This file imports all the SCSS files for the child theme.
- * The compiled CSS will be output to dist/main.css
+ * HaoYu AI Child Theme - 基础样式层
+ * 作用域：仅在 body.haoyu-theme 下生效，避免影响父主题默认样式
  */
 
-// Import GeneratePress parent theme styles (optional - usually not needed)
-// @import "../../../generatepress/style.css";
+// =============================================================================
+// 设计变量 (Design Tokens)
+// =============================================================================
+body.haoyu-theme {
+  // 颜色系统
+  --haoyu-color-primary: #7b6cff;
+  --haoyu-color-secondary: #5d6bff;
+  --haoyu-color-accent: #9b7bff;
+  --haoyu-text: #1d1f23;
+  --haoyu-text-muted: #5a6371;
+  --haoyu-bg-soft: #f7f8ff;
+  --haoyu-border: #e6e8f0;
 
-// Import your custom styles
-@import "components/header";
-@import "components/footer";
-@import "components/navigation";
-@import "components/content";
-@import "components/sidebar";
-@import "components/forms";
-@import "components/buttons";
+  // 圆角系统
+  --haoyu-radius-sm: 8px;
+  --haoyu-radius-md: 12px;
+  --haoyu-radius-lg: 16px;
 
-// Import utility classes
-@import "utilities/spacing";
-@import "utilities/typography";
-@import "utilities/colors";
+  // 阴影系统
+  --haoyu-shadow-sm: 0 4px 12px rgba(20, 20, 43, 0.06);
+  --haoyu-shadow-md: 0 8px 24px rgba(20, 20, 43, 0.08);
 
-// Import responsive styles
-@import "responsive/mobile";
-@import "responsive/tablet";
-@import "responsive/desktop";
+  // 间距系统
+  --haoyu-spacing-xs: 8px;
+  --haoyu-spacing-sm: 12px;
+  --haoyu-spacing-md: 16px;
+  --haoyu-spacing-lg: 24px;
+  --haoyu-spacing-xl: 40px;
 
-// Base styles
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: #333;
+  // 容器宽度
+  --haoyu-container: 1200px;
+
+  // 渐变系统
+  --haoyu-gradient: linear-gradient(135deg, #e9e5ff 0%, #eef3ff 50%, #f6f7ff 100%);
+  --haoyu-button-gradient: linear-gradient(135deg, var(--haoyu-color-primary) 0%, var(--haoyu-color-secondary) 100%);
+
+  // 基础样式
+  color: var(--haoyu-text);
 }
 
-// Custom variables
-:root {
-    --primary-color: #007cba;
-    --secondary-color: #005a87;
-    --accent-color: #ff6b35;
-    --text-color: #333;
-    --light-gray: #f8f9fa;
-    --border-color: #e9ecef;
-    --border-radius: 4px;
-    --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+// =============================================================================
+// 布局工具类 (Layout Utilities)
+// =============================================================================
+body.haoyu-theme {
+  .haoyu-container {
+    max-width: var(--haoyu-container);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .haoyu-section {
+    padding: var(--haoyu-spacing-xl) 0;
+
+    &.is-soft {
+      background: var(--haoyu-gradient);
+    }
+  }
 }
-/* 测试修改 */
+
+// =============================================================================
+// 组件样式 (Components)
+// =============================================================================
+body.haoyu-theme {
+  // 卡片组件
+  .haoyu-card {
+    background: #fff;
+    border: 1px solid var(--haoyu-border);
+    border-radius: var(--haoyu-radius-lg);
+    box-shadow: var(--haoyu-shadow-sm);
+    padding: var(--haoyu-spacing-lg);
+  }
+
+  // 按钮组件
+  .haoyu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: var(--haoyu-radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+    &.primary {
+      color: #fff;
+      background: var(--haoyu-button-gradient);
+      box-shadow: var(--haoyu-shadow-sm);
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--haoyu-shadow-md);
+      }
+    }
+
+    &.ghost {
+      color: var(--haoyu-color-primary);
+      background: #fff;
+      border: 1px solid var(--haoyu-border);
+    }
+  }
+
+  // 表单组件
+  .haoyu-input,
+  .haoyu-select,
+  .haoyu-textarea {
+    width: 100%;
+    border: 1px solid var(--haoyu-border);
+    border-radius: var(--haoyu-radius-md);
+    padding: 12px 14px;
+    background: #fff;
+    outline: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+    &:focus {
+      border-color: var(--haoyu-color-primary);
+      box-shadow: 0 0 0 3px rgba(123, 108, 255, 0.15);
+    }
+  }
+
+  .haoyu-field + .haoyu-field {
+    margin-top: var(--haoyu-spacing-md);
+  }
+}
+
+// =============================================================================
+// 主题皮肤 (Theme Skins)
+// =============================================================================
+body.haoyu-theme {
+  // Header 微调
+  .site-header {
+    backdrop-filter: saturate(180%) blur(6px);
+
+    &.is-stuck {
+      box-shadow: var(--haoyu-shadow-sm);
+      background: rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  .main-navigation {
+    a {
+      border-radius: 8px;
+      padding: 8px 10px;
+
+      &:hover {
+        background: #f2f3ff;
+      }
+    }
+  }
+
+  // Footer 微调
+  .site-footer {
+    background: #ffffff;
+    border-top: 1px solid var(--haoyu-border);
+  }
+
+  // Hero 皮肤
+  .haoyu-hero {
+    position: relative;
+    padding: calc(var(--haoyu-spacing-xl) * 1.25) 0;
+    background: var(--haoyu-gradient);
+
+    &.wave::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(1200px 600px at 20% -20%, rgba(123, 108, 255, 0.18), transparent 60%),
+        radial-gradient(1000px 500px at 80% 0%, rgba(93, 107, 255, 0.16), transparent 60%);
+      pointer-events: none;
+    }
+
+    .haoyu-container {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+// =============================================================================
+// 工具类 (Utility Classes)
+// =============================================================================
+body.haoyu-theme {
+  // 分隔线
+  .haoyu-divider {
+    height: 1px;
+    background: var(--haoyu-border);
+    margin: var(--haoyu-spacing-lg) 0;
+  }
+
+  // 排版工具
+  .haoyu-eyebrow {
+    color: var(--haoyu-color-primary);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .haoyu-title {
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .haoyu-muted {
+    color: var(--haoyu-text-muted);
+  }
+}

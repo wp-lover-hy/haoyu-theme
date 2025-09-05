@@ -8,6 +8,11 @@ export default defineConfig({
     port: 3000,
     host: true,
     cors: true,
+    // 监听文件变化并自动刷新
+    watch: {
+      usePolling: true,
+      interval: 1000
+    },
     // 代理到你的WordPress本地开发环境
     proxy: {
       '/wp-content': {
@@ -63,11 +68,10 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // 全局SCSS变量和混入
-        additionalData: `
-          @import "src/styles/variables.scss";
-          @import "src/styles/mixins.scss";
-        `
+        // 全局SCSS变量和混入 - 暂时为空，保持GP主题原有样式
+        additionalData: ``,
+        // 抑制Sass弃用警告
+        silenceDeprecations: ['legacy-js-api']
       }
     }
   },
@@ -94,11 +98,7 @@ export default defineConfig({
   // 路径别名
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@styles': fileURLToPath(new URL('./src/styles', import.meta.url)),
-      '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
-      '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
-      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
 

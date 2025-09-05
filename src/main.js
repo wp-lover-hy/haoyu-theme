@@ -1,32 +1,16 @@
 /**
- * HaoYu AI Child Theme - Main Entry Point
+ * HaoYu AI Child Theme - Clean Entry Point
  * 
- * This is the main entry point for the Vite build system.
- * All JavaScript modules and styles are imported here.
+ * 保持GP主题原有功能，不导入任何可能影响样式的组件
  */
 
-// Import styles
-import './styles/main.scss'
-
-// Import main JavaScript functionality
-import './components/mobile-menu'
-import './components/search'
-import './components/forms'
-import './components/animations'
-import './utils/helpers'
+// Import styles (currently empty)
+import './scss/main.scss'
 
 // Initialize theme when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('🚀 HaoYu AI Theme loaded successfully!')
+  console.log('HaoYu AI Child Theme loaded - keeping GP theme intact')
   
-  // Initialize all components
-  initTheme()
+  // 当需要时，在此处添加自定义功能
+  // 不破坏GP主题的原有功能
 })
-
-/**
- * Initialize theme functionality
- */
-function initTheme() {
-  // Add theme-specific initialization here
-  console.log('Theme initialized with Vite!')
-}
