@@ -1,133 +1,46 @@
 /**
- * HaoYu AI Child Theme - 基础样式层
+ * HaoYu AI Child Theme - 主题专用样式
  * 作用域：仅在 body.haoyu-theme 下生效，避免影响父主题默认样式
+ * 专注于：主题皮肤、WordPress 默认元素的样式调整
  */
 
+// 导入设计变量
+@import 'design-tokens';
+
 // =============================================================================
-// 设计变量 (Design Tokens)
+// 主题激活 (Theme Activation)
 // =============================================================================
 body.haoyu-theme {
-  // 颜色系统
-  --haoyu-color-primary: #7b6cff;
-  --haoyu-color-secondary: #5d6bff;
-  --haoyu-color-accent: #9b7bff;
-  --haoyu-text: #1d1f23;
-  --haoyu-text-muted: #5a6371;
-  --haoyu-bg-soft: #f7f8ff;
-  --haoyu-border: #e6e8f0;
-
-  // 圆角系统
-  --haoyu-radius-sm: 8px;
-  --haoyu-radius-md: 12px;
-  --haoyu-radius-lg: 16px;
-
-  // 阴影系统
-  --haoyu-shadow-sm: 0 4px 12px rgba(20, 20, 43, 0.06);
-  --haoyu-shadow-md: 0 8px 24px rgba(20, 20, 43, 0.08);
-
-  // 间距系统
-  --haoyu-spacing-xs: 8px;
-  --haoyu-spacing-sm: 12px;
-  --haoyu-spacing-md: 16px;
-  --haoyu-spacing-lg: 24px;
-  --haoyu-spacing-xl: 40px;
-
-  // 容器宽度
-  --haoyu-container: 1200px;
-
-  // 渐变系统
-  --haoyu-gradient: linear-gradient(135deg, #e9e5ff 0%, #eef3ff 50%, #f6f7ff 100%);
-  --haoyu-button-gradient: linear-gradient(135deg, var(--haoyu-color-primary) 0%, var(--haoyu-color-secondary) 100%);
-
-  // 基础样式
+  // 基础文字颜色
   color: var(--haoyu-text);
 }
 
 // =============================================================================
-// 布局工具类 (Layout Utilities)
+// WordPress 元素样式覆盖 (WordPress Element Overrides)
 // =============================================================================
 body.haoyu-theme {
-  .haoyu-container {
-    max-width: var(--haoyu-container);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+  // 覆盖 WordPress 默认的段落样式
+  .entry-content p {
+    line-height: 1.7;
+    margin-bottom: 1.2em;
   }
 
-  .haoyu-section {
-    padding: var(--haoyu-spacing-xl) 0;
-
-    &.is-soft {
-      background: var(--haoyu-gradient);
-    }
-  }
-}
-
-// =============================================================================
-// 组件样式 (Components)
-// =============================================================================
-body.haoyu-theme {
-  // 卡片组件
-  .haoyu-card {
-    background: #fff;
-    border: 1px solid var(--haoyu-border);
-    border-radius: var(--haoyu-radius-lg);
-    box-shadow: var(--haoyu-shadow-sm);
-    padding: var(--haoyu-spacing-lg);
+  // 覆盖 WordPress 默认的标题样式
+  .entry-content h1,
+  .entry-content h2,
+  .entry-content h3 {
+    color: var(--haoyu-text);
+    font-weight: 700;
   }
 
-  // 按钮组件
-  .haoyu-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 20px;
-    border-radius: var(--haoyu-radius-md);
-    font-weight: 600;
+  // 覆盖 WordPress 默认的链接样式
+  .entry-content a {
+    color: var(--haoyu-color-primary);
     text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-
-    &.primary {
-      color: #fff;
-      background: var(--haoyu-button-gradient);
-      box-shadow: var(--haoyu-shadow-sm);
-
-      &:hover {
-        transform: translateY(-1px);
-        box-shadow: var(--haoyu-shadow-md);
-      }
+    
+    &:hover {
+      text-decoration: underline;
     }
-
-    &.ghost {
-      color: var(--haoyu-color-primary);
-      background: #fff;
-      border: 1px solid var(--haoyu-border);
-    }
-  }
-
-  // 表单组件
-  .haoyu-input,
-  .haoyu-select,
-  .haoyu-textarea {
-    width: 100%;
-    border: 1px solid var(--haoyu-border);
-    border-radius: var(--haoyu-radius-md);
-    padding: 12px 14px;
-    background: #fff;
-    outline: none;
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
-
-    &:focus {
-      border-color: var(--haoyu-color-primary);
-      box-shadow: 0 0 0 3px rgba(123, 108, 255, 0.15);
-    }
-  }
-
-  .haoyu-field + .haoyu-field {
-    margin-top: var(--haoyu-spacing-md);
   }
 }
 
@@ -162,53 +75,41 @@ body.haoyu-theme {
     border-top: 1px solid var(--haoyu-border);
   }
 
-  // Hero 皮肤
-  .haoyu-hero {
-    position: relative;
-    padding: calc(var(--haoyu-spacing-xl) * 1.25) 0;
-    background: var(--haoyu-gradient);
-
-    &.wave::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: 
-        radial-gradient(1200px 600px at 20% -20%, rgba(123, 108, 255, 0.18), transparent 60%),
-        radial-gradient(1000px 500px at 80% 0%, rgba(93, 107, 255, 0.16), transparent 60%);
-      pointer-events: none;
-    }
-
-    .haoyu-container {
-      position: relative;
-      z-index: 1;
+  // 页面背景增强
+  &.has-custom-background {
+    .site-content {
+      background: var(--haoyu-gradient);
+      min-height: 100vh;
     }
   }
 }
 
 // =============================================================================
-// 工具类 (Utility Classes)
+// 主题特定的功能增强 (Theme-specific Enhancements)
 // =============================================================================
 body.haoyu-theme {
-  // 分隔线
-  .haoyu-divider {
-    height: 1px;
-    background: var(--haoyu-border);
-    margin: var(--haoyu-spacing-lg) 0;
+  // 添加主题激活标识
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--haoyu-button-gradient);
+    z-index: 9999;
+    pointer-events: none;
   }
 
-  // 排版工具
-  .haoyu-eyebrow {
-    color: var(--haoyu-color-primary);
-    font-weight: 700;
-    letter-spacing: 0.02em;
+  // WordPress 后台条补偿
+  &.admin-bar::before {
+    top: 32px;
   }
 
-  .haoyu-title {
-    font-weight: 800;
-    line-height: 1.2;
-  }
-
-  .haoyu-muted {
-    color: var(--haoyu-text-muted);
+  // 移动端后台条补偿
+  @media screen and (max-width: 782px) {
+    &.admin-bar::before {
+      top: 46px;
+    }
   }
 }
