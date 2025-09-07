@@ -12,6 +12,27 @@ if ( file_exists( __DIR__ . '/wordpress-stubs.php' ) ) {
     require_once __DIR__ . '/wordpress-stubs.php';
 }
 
+// 现代块主题/编辑器支持（遵循 WP 最新标准）
+add_action( 'after_setup_theme', function () {
+    // 核心块样式（如按钮、表格等的基础样式）
+    add_theme_support( 'wp-block-styles' );
+
+    // 宽度对齐（alignwide/alignfull）
+    add_theme_support( 'align-wide' );
+
+    // 响应式嵌入
+    add_theme_support( 'responsive-embeds' );
+
+    // 编辑器样式：让编辑器与前端保持一致
+    add_theme_support( 'editor-styles' );
+
+    // 优先使用构建产物，如果不存在也不报错
+    $editor_css = get_stylesheet_directory() . '/dist/main.css';
+    if ( file_exists( $editor_css ) ) {
+        add_editor_style( 'dist/main.css' );
+    }
+} );
+
 // 正确加载GeneratePress父主题的完整样式
 add_action( 'wp_enqueue_scripts', 'haoyuai_enqueue_assets' );
 function haoyuai_enqueue_assets() {
