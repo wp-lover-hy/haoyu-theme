@@ -50,11 +50,19 @@ body.haoyu-theme {
 body.haoyu-theme {
   // Header 微调
   .site-header {
-    backdrop-filter: saturate(180%) blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: saturate(160%) blur(8px);
+    -webkit-backdrop-filter: saturate(160%) blur(8px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: background 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 
-    &.is-stuck {
-      box-shadow: var(--haoyu-shadow-sm);
+    &.haoyu-glass-solid {
       background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 24px rgba(20, 20, 43, 0.08);
+      border-bottom-color: rgba(0, 0, 0, 0.08);
     }
   }
 
@@ -70,9 +78,40 @@ body.haoyu-theme {
   }
 
   // Footer 微调
+  // Footer 风格：深色+波浪背景图（自适应）
   .site-footer {
-    background: #ffffff;
-    border-top: 1px solid var(--wp--preset--color--border);
+    --footer-bg: #0f172a;
+    color: #e5e7eb;
+    background-color: var(--footer-bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    a { color: #e5e7eb; }
+    a:hover { color: #ffffff; text-decoration: none; }
+
+    // 三列自定义布局
+    .inside-site-info {
+      padding-top: clamp(24px, 4vw, 40px);
+      padding-bottom: clamp(24px, 4vw, 40px);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: clamp(16px, 3vw, 32px);
+    }
+
+    .grid-footer .footer-heading { font-size: 18px; color: #cbd5e1; margin: 0 0 8px; }
+    .grid-footer .footer-menu { list-style: none; margin: 0; padding: 0; }
+    .grid-footer .footer-menu li { margin: 6px 0; }
+    .grid-footer .contact-list { list-style: none; margin: 0; padding: 0; }
+    .grid-footer .contact-list li { margin: 6px 0; }
+
+    .friend-links { text-align: center; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .friend-links-menu { list-style: none; display: inline-flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 8px 0; }
+    .friend-links-menu li { margin: 0; }
+    .friend-links-menu a { color: #cbd5e1; }
+    .friend-links-menu a:hover { color: #ffffff; }
+
+    .copyright { text-align: center; padding: 10px 0 24px; background: transparent !important; font-size: 14px; color: #cbd5e1; }
+    .copyright .icp { margin-left: 12px; }
+    .copyright .icp a { color: #cbd5e1; }
+    .copyright .icp a:hover { color: #ffffff; }
   }
 
   // 页面背景增强
@@ -111,5 +150,14 @@ body.haoyu-theme {
     &.admin-bar::before {
       top: 46px;
     }
+  }
+}
+
+// 响应式小优化
+@media (max-width: 768px) {
+  body.haoyu-theme {
+    .main-navigation a { padding: 8px 8px; }
+    .site-footer { background-size: 200% 140px; }
+    .site-footer .inside-site-info { grid-template-columns: 1fr; }
   }
 }

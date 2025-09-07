@@ -129,3 +129,14 @@ function haoyuai_add_theme_class( $classes ) {
     return $classes;
 }
 
+
+function custom_register_nav_menus() {
+    register_nav_menus(
+        array(
+            'friendship_links_menu' => __( '友情链接菜单', 'friendship_links_menu' ),
+            // 你还可以在这里添加更多其他菜单位置
+            // 'another_menu_location' => __( '另一个菜单位置', 'haoyu-theme' ),
+        )
+    );
+}
+add_action( 'after_setup_theme', 'custom_register_nav_menus' );

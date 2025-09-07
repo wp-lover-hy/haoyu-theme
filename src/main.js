@@ -13,4 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // 当需要时，在此处添加自定义功能
   // 不破坏GP主题的原有功能
+
+  // 透明吸顶 Header：滚动后收敛为更实的磨砂背景
+  const header = document.querySelector('.site-header')
+  if (header) {
+    const onScroll = () => {
+      if (window.scrollY > 8) {
+        header.classList.add('haoyu-glass-solid')
+      } else {
+        header.classList.remove('haoyu-glass-solid')
+      }
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+  }
 })
