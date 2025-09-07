@@ -4,8 +4,8 @@
  * 专注于：主题皮肤、WordPress 默认元素的样式调整
  */
 
-// 导入设计变量
-@import 'design-tokens';
+// 导入设计变量（Sass @import 已弃用，改用 @use）
+@use './design-tokens' as *;
 
 // =============================================================================
 // 主题激活 (Theme Activation)
