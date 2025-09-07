@@ -50,7 +50,7 @@ add_action( 'after_setup_theme', function () {
 } );
 
 // 正确加载GeneratePress父主题的完整样式
-add_action( 'wp_enqueue_scripts', 'haoyuai_enqueue_assets' );
+add_action( 'wp_enqueue_scripts', 'haoyuai_enqueue_assets', 50 );
 function haoyuai_enqueue_assets() {
     // 加载GeneratePress父主题的主要样式文件
     wp_enqueue_style( 'generatepress-style', 
