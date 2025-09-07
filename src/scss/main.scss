@@ -12,7 +12,7 @@
 // =============================================================================
 body.haoyu-theme {
   // 基础文字颜色
-  color: var(--haoyu-text);
+  color: var(--wp--preset--color--text);
 }
 
 // =============================================================================
@@ -29,13 +29,13 @@ body.haoyu-theme {
   .entry-content h1,
   .entry-content h2,
   .entry-content h3 {
-    color: var(--haoyu-text);
+    color: var(--wp--preset--color--text);
     font-weight: 700;
   }
 
   // 覆盖 WordPress 默认的链接样式
   .entry-content a {
-    color: var(--haoyu-color-primary);
+    color: var(--wp--preset--color--primary);
     text-decoration: none;
     
     &:hover {
@@ -72,13 +72,13 @@ body.haoyu-theme {
   // Footer 微调
   .site-footer {
     background: #ffffff;
-    border-top: 1px solid var(--haoyu-border);
+    border-top: 1px solid var(--wp--preset--color--border);
   }
 
   // 页面背景增强
   &.has-custom-background {
     .site-content {
-      background: var(--haoyu-gradient);
+      background: var(--wp--preset--gradient--brand-gradient);
       min-height: 100vh;
     }
   }
@@ -96,7 +96,7 @@ body.haoyu-theme {
     left: 0;
     right: 0;
     height: 3px;
-    background: var(--haoyu-button-gradient);
+    background: var(--wp--preset--gradient--button-gradient);
     z-index: 9999;
     pointer-events: none;
   }
